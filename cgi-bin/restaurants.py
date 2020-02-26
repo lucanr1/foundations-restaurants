@@ -1,6 +1,6 @@
-#!/usr/local/bin/python3
+#!/usr/bin/env python3
 import cgi
-import os
+#import os
 
 form = cgi.FieldStorage()
 
@@ -13,7 +13,7 @@ class resClass:
 resList = []
 
 def txtToClass():
-  path = "/Users/luca/Projects/Foundations/restaurants/restaurants.txt"
+  path = "/Users/luca/Projects/Foundations/restaurants/cgi-bin/restaurants.txt"
   resDoc = open(path, "r").readlines()
   
   for line in resDoc:
@@ -22,9 +22,11 @@ def txtToClass():
       res = resClass(name, suburb)
       resList.append(res) 
 
-  resDoc.close()
+  #resDoc.close()
 
 txtToClass()
+
+print("Hier Bruder "+resList[0].name)
 
 resName = form.getvalue("restaurant")
 resSuburb = form.getvalue("suburb")
@@ -40,10 +42,15 @@ divSingle = """
 
 divAll = ""
 
-for x in resList:
-  divAll = divAll + divSingle.format(resList[x].name, resList[x].suburb)
+#for x in resList:
+  #divAll = divAll + divSingle.format(resList[x].name, resList[x].suburb)
 
-page = """
+i = 0
+while i < len(resList):
+  divAll = divAll + divSingle.format(resList[i].name, resList[i].suburb)
+  i = i+1
+
+print(f"""
     <!DOCTYPE html>
     <html lang="en" dir="ltr">
       <head>
@@ -55,13 +62,11 @@ page = """
         <div class="main">
           <h1>Restaurants in Berlin</h1>
 
-          {}
+          {divAll}
 
           <a href="/index.html">Go Back</a>
         </div>
 
       </body>
     </html>
-""".format(divAll)
-
-print(page)
+""")
