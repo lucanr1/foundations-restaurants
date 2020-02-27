@@ -11,7 +11,7 @@ class resClass:
 resList = []
 
 def txtToClass():
-  path = "restaurants.txt"
+  path = "cgi-bin/restaurants.txt"
   resDoc = open(path, "r").readlines()
   
   for line in resDoc:
