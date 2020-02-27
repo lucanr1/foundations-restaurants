@@ -6,7 +6,7 @@ import socketserver
 # define the handler to be the CGI server
 handler = http.server.CGIHTTPRequestHandler
 # point the handler to a directory with scripts
-handler.cgi_directories = ["/cgi-scripts"]
+handler.cgi_directories = ["/cgi-bin"]
 # define the server using the handler
 PORT = 80
 httpd = socketserver.TCPServer(("0.0.0.0", PORT), handler)
