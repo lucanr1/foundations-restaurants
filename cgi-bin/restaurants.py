@@ -1,6 +1,4 @@
-#!/usr/bin/env python3
 import cgi
-#import os
 
 form = cgi.FieldStorage()
 
@@ -13,7 +11,7 @@ class resClass:
 resList = []
 
 def txtToClass():
-  path = "/Users/luca/Projects/Foundations/restaurants/cgi-bin/restaurants.txt"
+  path = "restaurants.txt"
   resDoc = open(path, "r").readlines()
   
   for line in resDoc:
@@ -46,7 +44,7 @@ while i < len(resList):
   divAll = divAll + divSingle.format(resList[i].name, resList[i].suburb)
   i = i+1
 
-print(f"""
+print("""
     <!DOCTYPE html>
     <html lang="en" dir="ltr">
       <head>
@@ -57,9 +55,9 @@ print(f"""
       <body>
         <div class="main">
           <h1>Restaurants in Berlin</h1>
-          {divAll}
+          {}
           <a href="/index.html" id="back">Go Back</a>
         </div>
       </body>
     </html>
-""")
+""".format(divAll))
