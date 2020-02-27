@@ -26,8 +26,6 @@ def txtToClass():
 
 txtToClass()
 
-print("Hier Bruder "+resList[0].name)
-
 resName = form.getvalue("restaurant")
 resSuburb = form.getvalue("suburb")
 
@@ -38,12 +36,10 @@ divSingle = """
   <p class="resName">{}</p>
   <p class="resSuburb">{}</p>
 </div>
+<hr>
 """
 
 divAll = ""
-
-#for x in resList:
-  #divAll = divAll + divSingle.format(resList[x].name, resList[x].suburb)
 
 i = 0
 while i < len(resList):
@@ -61,12 +57,9 @@ print(f"""
       <body>
         <div class="main">
           <h1>Restaurants in Berlin</h1>
-
           {divAll}
-
-          <a href="/index.html">Go Back</a>
+          <a href="/index.html" id="back">Go Back</a>
         </div>
-
       </body>
     </html>
 """)
